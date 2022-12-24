@@ -1,6 +1,7 @@
 {
   "expo": {
     "name": "suggestmeal",
+    "plugins": ["@notifee/react-native"],
     "slug": "suggestmeal",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -14,20 +15,25 @@
     "updates": {
       "fallbackToCacheTimeout": 0
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.sigmaz.suggestmeal"
     },
     "android": {
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#FFFFFF"
-      }
+      },
+      "package": "com.sigmaz.suggestmeal"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "6103481d-2ca1-4de8-b013-5a95196b7304"
+      }
     }
   }
 }

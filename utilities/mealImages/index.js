@@ -1,0 +1,10 @@
+// export { default as amala } from "./amala.jpg";
+export { default as eba } from "./eba.jpg";
+export { default as jollof } from "./jollof.jpg";
+export { default as biscuitsncoffee } from "./biscuitsncoffee.jpg";
+export { default as iyan } from "./iyan.jpg";
+export { default as rice } from "./rice.jpg";
+export { default as yamnegg } from "./yamnegg.jpg";
+export { default as yamneggsauce } from "./yamneggsauce.jpg";
+export { default as rnb } from "./rnb.jpg";
+export { default as amala } from "./rnb.jpg";
