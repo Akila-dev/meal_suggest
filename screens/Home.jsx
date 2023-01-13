@@ -2,7 +2,7 @@ import { View, Text, ScrollView, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import React, { useState, useEffect } from "react";
 
-import { Header, SuggestionCard, Footer } from "../components";
+import { Header, SuggestionCard, Footer, Login } from "../components";
 import {
   SUNDAY,
   MONDAY,
@@ -15,12 +15,15 @@ import {
 import emptyImg from "../assets/images/empty.png";
 
 const Home = ({ navigation, route }) => {
+  const [loading, setLoading] = useState(true);
   const [breakfastTime, setBreakfastTime] = useState("");
   const [lunchTime, setLunchTime] = useState("");
   const [dinnerTime, setDinnerTime] = useState("");
   const [suggestionType, setSuggestionType] = useState("");
   const [foodList, setFoodList] = useState([]);
   const [timeOfDay, setTimeOfDay] = useState("");
+  const [showLogin, setShowLogin] = useState(true);
+  const [username, setUsername] = useState("New User");
 
   const [mealList, setMealList] = useState([]);
   const [mealSuggestion, setMealSuggestion] = useState([]);
@@ -96,6 +99,22 @@ const Home = ({ navigation, route }) => {
     }
   };
 
+  const getUsername = async () => {
+    try {
+      AsyncStorage.getItem("username").then((value) => {
+        if (value !== null) {
+          setUsername(value);
+          setShowLogin(false);
+          console.log(username);
+        } else {
+          setShowLogin(true);
+        }
+      });
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
   var date = new Date();
   let day = date.getDay();
   let time = date.getHours();
@@ -106,10 +125,19 @@ const Home = ({ navigation, route }) => {
       getLunchTime();
       getDinnerTime();
       getSuggestionType();
+      getUsername();
     });
 
     return unsubscribe;
   }, [navigation, route]);
+
+  useEffect(() => {
+    const noticetimechange = navigation.addListener("focus", () => {
+      getSuggestionType();
+    });
+
+    return noticetimechange;
+  }, [time]);
 
   useEffect(() => {
     setTimeout(() => showSuggestions(), 500);
@@ -222,59 +250,76 @@ const Home = ({ navigation, route }) => {
     }
   };
 
+  useEffect(() => {
+    setTimeout(() => {
+      setLoading(false);
+    }, 1000);
+  }, []);
+
   return (
     <View className="flex-1 bg-white">
-      <Header navigation={navigation} />
-      <Footer navigation={navigation} />
-
-      <ScrollView>
-        <View className="px-5 py-8">
-          <Text className="text-gray-800 text-xl pb-1 font-bold">
-            Hello {"New User"}
-          </Text>
-          {/* <Text>{breakfastTime}</Text>
-          <Text>{lunchTime}</Text>
-          <Text>{dinnerTime}</Text>
-          <Text>{suggestionType}</Text>
-          <Text>{foodList}</Text> */}
-          <Text className="text-gray-800 text-ss font-light">
-            Here's your meal suggestion for the {timeOfDay}
+      {loading ? (
+        <View className="flex-1 bg-white justify-center items-center">
+          <Text classname="text-lg text-gray-800 font-semibold">
+            Loading...
           </Text>
         </View>
-        <View className="px-4 pb-[90px]">
-          {mealList.length > 0 ? (
-            mealList?.map((meal) => (
-              <SuggestionCard
-                img={meal.img}
-                name={meal.name}
-                type={meal.type}
-                key={meal.name}
-              />
-            ))
+      ) : (
+        <View className="flex-1 bg-white">
+          <Header navigation={navigation} />
+          {showLogin || <Footer navigation={navigation} />}
+
+          {showLogin ? (
+            <Login close={() => setShowLogin(false)} />
           ) : (
-            <View className="text-gray-800 text-ss font-light py-[10px] items-center">
-              <Image
-                source={emptyImg}
-                style={{
-                  resizeMode: "contain",
-                }}
-                className="w-[85%] h-[200px] rounded-xl border"
-              />
-              <Text className="text-gray-600 text-xl uppercase text-center font-semibold mt-5">
-                No suggestion fits your preference
-              </Text>
-              <Text className="text-gray-800 font-light mt-2 text-center">
-                Try switching to All Foods, or add more foodstuffs to your
-                inventory
-              </Text>
+            <View className="flex-1">
+              <ScrollView>
+                <View className="px-5 py-8">
+                  <Text className="text-gray-800 text-xl pb-1 font-bold capitalize">
+                    Hello {username}
+                  </Text>
+                  <Text className="text-gray-800 text-ss font-light">
+                    Here's your meal suggestion for the {timeOfDay}
+                  </Text>
+                </View>
+                <View className="px-4 pb-[90px]">
+                  {mealList.length > 0 ? (
+                    mealList?.map((meal) => (
+                      <SuggestionCard
+                        img={meal.img}
+                        name={meal.name}
+                        type={meal.type}
+                        key={meal.name}
+                      />
+                    ))
+                  ) : (
+                    <View className="text-gray-800 text-ss font-light py-[10px] items-center">
+                      <Image
+                        source={emptyImg}
+                        style={{
+                          resizeMode: "contain",
+                        }}
+                        className="w-[85%] h-[200px] rounded-xl border"
+                      />
+                      <Text className="text-gray-600 text-xl uppercase text-center font-semibold mt-5">
+                        No suggestion fits your preference
+                      </Text>
+                      <Text className="text-gray-800 font-light mt-2 text-center">
+                        Try switching to All Foods, or add more foodstuffs to
+                        your inventory
+                      </Text>
+                    </View>
+                  )}
+                </View>
+              </ScrollView>
+              <View className="absolute flex-1 h-screen w-full left-0 top-0 right-0 bottom-0 z-[-1]">
+                <View className="h-[50vh] bg-gray-100"></View>
+                <View className="h-full"></View>
+              </View>
             </View>
           )}
         </View>
-      </ScrollView>
-      <View className="absolute flex-1 h-screen w-full left-0 top-0 right-0 bottom-0 z-[-1]">
-        <View className="h-[50vh] bg-gray-100"></View>
-        <View className="h-full"></View>
-      </View>
+      )}
     </View>
   );
 };
