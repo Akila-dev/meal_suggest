@@ -8,6 +8,18 @@ import {
   yamnegg,
   yamneggsauce,
   rnb,
+  goldenm,
+  goldsalad,
+  cornflakes,
+  cornsalad,
+  plantain,
+  potato,
+  friedricesalad,
+  friedrice,
+  jollofplantain,
+  beans,
+  fruitsalad,
+  snacks,
 } from "./mealImages";
 
 export const SUNDAY = {
@@ -21,25 +33,25 @@ export const SUNDAY = {
     {
       name: "Golden morn & Milk",
       type: "light",
-      img: amala,
+      img: goldenm,
       ingredients: ["goldenmorn"],
     },
     {
       name: "Corn flakes & Milk",
       type: "light",
-      img: amala,
+      img: cornflakes,
       ingredients: ["cornflakes"],
     },
     {
       name: "Plantain Chips & Milk",
       type: "light",
-      img: amala,
+      img: plantain,
       ingredients: ["plantain"],
     },
     {
       name: "Potato Chips & Milk",
       type: "light",
-      img: amala,
+      img: potato,
       ingredients: ["potato"],
     },
   ],
@@ -47,7 +59,7 @@ export const SUNDAY = {
     {
       name: "Fried Rice",
       type: "heavy",
-      img: amala,
+      img: friedrice,
       ingredients: ["rice"],
     },
     {
@@ -59,13 +71,13 @@ export const SUNDAY = {
     {
       name: "Jollof Rice & Plantain",
       type: "heavy",
-      img: amala,
+      img: jollofplantain,
       ingredients: ["rice", "plantain"],
     },
     {
       name: "Fried Rice & Salad",
       type: "heavy",
-      img: amala,
+      img: friedricesalad,
       ingredients: ["rice"],
     },
   ],
@@ -73,19 +85,19 @@ export const SUNDAY = {
     {
       name: "Beans & Pepper sauce",
       type: "heavy",
-      img: amala,
+      img: beans,
       ingredients: ["beans"],
     },
     {
       name: "Fruit salad",
       type: "heavy",
-      img: amala,
+      img: fruitsalad,
       ingredients: ["fruits"],
     },
     {
       name: "Snacks & Drink",
       type: "heavy",
-      img: amala,
+      img: snacks,
       ingredients: [],
     },
   ],
@@ -114,19 +126,19 @@ export const MONDAY = {
     {
       name: "Golden morn & Milk",
       type: "light",
-      img: amala,
+      img: goldenm,
       ingredients: ["goldenmorn"],
     },
     {
       name: "Corn flakes & Milk",
       type: "light",
-      img: amala,
+      img: cornflakes,
       ingredients: ["cornflakes"],
     },
     {
       name: "Potato Chips & Tea",
       type: "light",
-      img: amala,
+      img: potato,
       ingredients: ["potato"],
     },
   ],
@@ -184,7 +196,7 @@ export const MONDAY = {
     {
       name: "Fruit salad",
       type: "heavy",
-      img: amala,
+      img: fruitsalad,
       ingredients: ["fruits"],
     },
   ],
@@ -211,10 +223,10 @@ export const TUESDAY = {
       ingredients: ["yam"],
     },
     {
-      name: "potatoes & vegetable stew",
+      name: "potato & vegetable stew",
       type: "light",
       img: amala,
-      ingredients: ["potatoes"],
+      ingredients: ["potato"],
     },
     {
       name: "Noodles & egg",
@@ -300,14 +312,20 @@ export const WEDNESDAY = {
     {
       name: "Golden morn & Salad",
       type: "light",
-      img: amala,
+      img: goldsalad,
       ingredients: ["goldenmorn"],
     },
     {
       name: "Corn flakes & Salad",
       type: "light",
-      img: amala,
+      img: cornsalad,
       ingredients: ["cornflakes"],
+    },
+    {
+      name: "Eko & Milk",
+      type: "light",
+      img: amala,
+      ingredients: [],
     },
   ],
   lunch: [
@@ -369,13 +387,13 @@ export const THURSDAY = {
     {
       name: "Golden morn & Salad",
       type: "light",
-      img: amala,
+      img: goldsalad,
       ingredients: ["goldenmorn"],
     },
     {
       name: "Corn flakes & Salad",
       type: "light",
-      img: amala,
+      img: cornsalad,
       ingredients: ["cornflakes"],
     },
   ],
@@ -421,6 +439,12 @@ export const THURSDAY = {
     {
       name: "Isi ewu",
       type: "heavy",
+      img: amala,
+      ingredients: [],
+    },
+    {
+      name: "Eko & Milk",
+      type: "light",
       img: amala,
       ingredients: [],
     },
