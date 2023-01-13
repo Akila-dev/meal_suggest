@@ -4,3 +4,4 @@ export { default as FoodListCard } from "./FoodListCard.jsx";
 export { default as SuggestionCard } from "./SuggestionCard.jsx";
 export { default as MealTimeCard } from "./MealTimeCard.jsx";
 export { default as EditUsername } from "./EditUsername.jsx";
+export { default as Login } from "./Login.jsx";

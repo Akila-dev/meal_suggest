@@ -6,9 +6,9 @@ import {
   TextInput,
 } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
-const EditUsername = ({ close, username }) => {
+const Login = ({ close }) => {
   const [text, onChangeText] = useState("");
 
   const saveData = async (name, value) => {
@@ -23,18 +23,14 @@ const EditUsername = ({ close, username }) => {
 
   const changeUsername = () => {
     saveData("username", text);
-    username();
 
     close();
   };
   return (
     <View className="absolute w-full h-full top-0 left-0 z-40 bg-white justify-center items-center px-5">
-      <TouchableOpacity onPress={close} className="p-1 absolute right-5 top-7">
-        <Text className="text-center font-bold text-xl">&#x2715;</Text>
-      </TouchableOpacity>
       <View className="w-full p-5 border border-gray-200">
         <Text className="text-center font-bold uppercase mb-10">
-          Edit User Details
+          Enter Username
         </Text>
         <SafeAreaView>
           <TextInput
@@ -45,14 +41,14 @@ const EditUsername = ({ close, username }) => {
           />
         </SafeAreaView>
         <TouchableOpacity
-          onPress={changeUsername}
+          onPress={() => changeUsername()}
           className="mt-5 w-full p-3 bg-yellow-400 border border-black rounded"
         >
-          <Text className="text-center font-semibold">Change Username</Text>
+          <Text className="text-center font-semibold">Set Username</Text>
         </TouchableOpacity>
       </View>
     </View>
   );
 };
 
-export default EditUsername;
+export default Login;
