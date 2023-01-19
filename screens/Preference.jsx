@@ -1,15 +1,13 @@
+import React, { useState, useEffect } from "react";
 import { View, Text, ScrollView, TouchableOpacity } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import React, { useState, useEffect } from "react";
 import RNPickerSelect from "react-native-picker-select";
-import RadioGroup from "react-native-radio-buttons-group";
 
 import { Footer, Header } from "../components";
 import { BREAKFAST, LUNCH, DINNER } from "../utilities/timeOptions";
 import { mealTypes } from "../utilities/mealTypes";
 
-const Preference = ({ navigation }) => {
-  // const [breakfastT, setBreakfastT] = useState("");
+const Preference = ({ navigation, route }) => {
   const [breakfastTime, setBreakfastTime] = useState("");
   const [lunchTime, setLunchTime] = useState("");
   const [dinnerTime, setDinnerTime] = useState("");
@@ -73,7 +71,7 @@ const Preference = ({ navigation }) => {
     getLunchData();
     getDinnerData();
     getSuggestionType();
-  }, []);
+  }, [navigation, route]);
 
   useEffect(() => {
     saveData("breakfastTime", breakfastTime);
