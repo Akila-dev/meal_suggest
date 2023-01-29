@@ -95,10 +95,12 @@ const Foodstuffs = ({ navigation }) => {
               className="py-2 px-4 border border-gray-100 rounded"
             />
             <TouchableOpacity
-              className="mt-5 w-full p-3 bg-yellow-400 border border-black rounded"
+              className="mt-5 w-full p-3 bg-red-600 border border-black rounded"
               onPress={addFoodStuff}
             >
-              <Text className="text-center font-semibold">Add Foodstuff</Text>
+              <Text className="text-center font-semibold text-white">
+                Add Foodstuff
+              </Text>
             </TouchableOpacity>
           </View>
           <View className="pb-4">
@@ -116,7 +118,7 @@ const Foodstuffs = ({ navigation }) => {
         </SafeAreaView>
       </ScrollView>
       <View className="absolute flex-1 h-screen w-full left-0 top-0 right-0 bottom-0 z-[-1]">
-        <View className="h-[50vh] bg-gray-100"></View>
+        <View className="h-[50vh] bg-gray-200"></View>
         <View className="h-full"></View>
       </View>
     </View>

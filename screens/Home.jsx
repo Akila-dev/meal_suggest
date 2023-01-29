@@ -13,6 +13,7 @@ import {
   SATURDAY,
 } from "../utilities/Foods";
 import emptyImg from "../assets/images/empty.png";
+import logo from "../assets/images/logo.jpeg";
 
 const Home = ({ navigation, route }) => {
   const [loading, setLoading] = useState(true);
@@ -260,7 +261,11 @@ const Home = ({ navigation, route }) => {
     <View className="flex-1 bg-white">
       {loading ? (
         <View className="flex-1 bg-white justify-center items-center">
-          <Text classname="text-lg text-gray-800 font-semibold">
+          <Image
+            source={logo}
+            className="w-[220px] h-[150px] object-cover mb-5"
+          />
+          <Text className="text-xl text-gray-800 font-semibold italic">
             Loading...
           </Text>
         </View>
@@ -313,7 +318,7 @@ const Home = ({ navigation, route }) => {
                 </View>
               </ScrollView>
               <View className="absolute flex-1 h-screen w-full left-0 top-0 right-0 bottom-0 z-[-1]">
-                <View className="h-[50vh] bg-gray-100"></View>
+                <View className="h-[40vh] bg-gray-200"></View>
                 <View className="h-full"></View>
               </View>
             </View>
