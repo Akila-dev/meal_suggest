@@ -6,7 +6,7 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import { Home, Profile, Foodstuffs, FoodList, Preference } from "./screens";
 import { Header, Footer } from "./components";
 
-import notifee from "@notifee/react-native";
+// import notifee from "@notifee/react-native";
 
 const Stack = createNativeStackNavigator();
 
@@ -102,29 +102,29 @@ export default function App() {
     getUsername();
   }, [time]);
 
-  async function onDisplayNotification(mealType) {
-    // Request permissions (required for iOS)
-    await notifee.requestPermission();
+  // async function onDisplayNotification(mealType) {
+  //   // Request permissions (required for iOS)
+  //   await notifee.requestPermission();
 
-    // Create a channel (required for Android)
-    const channelId = await notifee.createChannel({
-      id: "default",
-      name: "Default Channel",
-    });
+  //   // Create a channel (required for Android)
+  //   const channelId = await notifee.createChannel({
+  //     id: "default",
+  //     name: "Default Channel",
+  //   });
 
-    // Display a notification
-    await notifee.displayNotification({
-      title: `Hi, ${username}`,
-      body: `It's time for ${mealType}`,
-      android: {
-        channelId,
-        // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
-        pressAction: {
-          id: "default",
-        },
-      },
-    });
-  }
+  //   // Display a notification
+  //   await notifee.displayNotification({
+  //     title: `Hi, ${username}`,
+  //     body: `It's time for ${mealType}`,
+  //     android: {
+  //       channelId,
+  //       // smallIcon: 'name-of-a-small-icon', // optional, defaults to 'ic_launcher'.
+  //       pressAction: {
+  //         id: "default",
+  //       },
+  //     },
+  //   });
+  // }
   return (
     <NavigationContainer>
       <Stack.Navigator

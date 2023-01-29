@@ -165,7 +165,7 @@ const Preference = ({ navigation, route }) => {
         </View>
       </ScrollView>
       <View className="absolute flex-1 h-screen w-full left-0 top-0 right-0 bottom-0 z-[-1]">
-        <View className="h-[50vh] bg-gray-100"></View>
+        <View className="h-[55vh] bg-gray-200"></View>
         <View className="h-full"></View>
       </View>
     </View>
